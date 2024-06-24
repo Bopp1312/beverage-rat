@@ -8,13 +8,14 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import pandas as pd
 
-fileDir = "./files/"
-marker_len = 22/1000.0 #m
-square_len = 28/1000.0 #m
+fileDir = ""
+marker_len = 0.028 #m
+square_len = 0.035 #m
 aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
 board = aruco.CharucoBoard_create(7,5,square_len, marker_len, aruco_dict)
-imboard = board.draw((2500, 2500))
+imboard = board.draw((700, 500))
 #cv2.imwrite(fileDir + "chessboard.tiff", imboard)
+#quit()
 
 calImageDir = "calibration_images/"
 images = np.array([calImageDir + f for f in os.listdir(calImageDir) if f.endswith(".jpg")])
@@ -23,9 +24,6 @@ order = np.argsort([int((p.split("_")[-1]).split(".")[0]) for p in images])
 #print(order)
 images = images[order]
 print(images)
-
-
-
 
 def read_chessboards(images):
     """
@@ -102,7 +100,7 @@ np.save("matrix_coefficents",mtx)
 np.save("distortion_coefficents",dist)
 
 
-i=3 # select image id
+i=20 # select image id
 plt.figure()
 frame = cv2.imread(images[i])
 img_undist = cv2.undistort(frame,mtx,dist,None)

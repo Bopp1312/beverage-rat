@@ -9,5 +9,9 @@
 	</node>
 	
 	<node name="joy_driver" pkg="beverage-rat" type="joy_command.py" />
+    
+    <!-- <node name="aruco_publisher" pkg="beverage-rat" type="aruco_constant.py" output="screen" /> -->
+
+    <node name="kalman_filter" pkg="beverage-rat" type="kalman_node.py" /> 
 
 </launch>

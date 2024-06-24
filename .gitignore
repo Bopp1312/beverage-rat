@@ -1,0 +1,3 @@
+# Specify filepatterns you want git to ignore.
+# Ignore all bag files
+*.bag
